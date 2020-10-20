@@ -45,9 +45,9 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       shell: powershell
       run: |
-        .\.sonar\scanner\dotnet-sonarscanner begin /k:"JohnnyJosep_CottonBox" /o:"johnnyjosep" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
+        .\.sonar\scanner\dotnet-sonarscanner begin /k:"JohnnyJosep_CottonBox" /o:"johnnyjosep" /d:sonar.cs.opencover.reportsPaths="**/coverage.opencover.xml" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" 
         dotnet build --configuration Release --no-restore
-        dotnet test --no-restore --verbosity normal
+        dotnet test --no-restore --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
         .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
       
       

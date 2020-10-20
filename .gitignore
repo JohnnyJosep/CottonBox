@@ -13,7 +13,12 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
+[Tt]estResults/
+coverage.opencover.xml
 
 # JetBrains
 .idea/
 *.DotSettings.user
+
+# SonarCloud
+.sonar/
